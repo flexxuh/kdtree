@@ -171,12 +171,11 @@ public class KdTree {
                 if (isEmpty()) {
                     KdTree = new Node(p, new RectHV(0, 0, 1, 1), true);
                     KdTree.setTt(c++);
-                    count++;
                 } else {
                     searchInsertTree(KdTree, p);
-                    count++;
 
                 }
+                count++;
             }
         }
         else throw new IllegalArgumentException("Point is null");
@@ -311,6 +310,17 @@ public class KdTree {
     private void drawSubtree(Node node){
         if(node!=null&&node.getP()!=null) {
             node.getP().draw();
+            double x = node.getP().x();
+            double y = node.getP().y();
+            RectHV rect = node.getRect();
+            if(node.oriantationX){
+                StdDraw.setPenColor(255,0,0);
+                StdDraw.line(x,rect.ymax(),x,rect.ymin());
+            }
+            else{
+                StdDraw.setPenColor(0,0,255);
+                StdDraw.line(rect.xmin(),y,rect.xmax(),y);
+            }
             if (node.getLb() != null && node.getLb().getP() != null) {
                 drawSubtree(node.getLb());
             }
@@ -321,11 +331,9 @@ public class KdTree {
 
     }
         public void draw(){
-            StdDraw.setCanvasSize(1,1);
             StdDraw.setPenColor(StdDraw.RED);
-            StdDraw.setPenRadius(.01);
-            StdDraw.setXscale(0,1);
-            StdDraw.setYscale(0,1);
+           StdDraw.setPenRadius(.01);
+
             drawSubtree(KdTree);
             StdDraw.show();
 
