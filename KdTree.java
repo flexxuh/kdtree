@@ -309,18 +309,22 @@ public class KdTree {
 
     private void drawSubtree(Node node){
         if(node!=null&&node.getP()!=null) {
-            node.getP().draw();
             double x = node.getP().x();
             double y = node.getP().y();
             RectHV rect = node.getRect();
             if(node.oriantationX){
                 StdDraw.setPenColor(255,0,0);
                 StdDraw.line(x,rect.ymax(),x,rect.ymin());
+                StdDraw.setPenColor(0,0,0);
+                node.getP().draw();
             }
             else{
                 StdDraw.setPenColor(0,0,255);
                 StdDraw.line(rect.xmin(),y,rect.xmax(),y);
+                StdDraw.setPenColor(255,0,0);
+                node.getP().draw();
             }
+
             if (node.getLb() != null && node.getLb().getP() != null) {
                 drawSubtree(node.getLb());
             }
