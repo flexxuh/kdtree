@@ -333,7 +333,6 @@ public class KdTree {
         public void draw(){
             StdDraw.setPenColor(StdDraw.RED);
            StdDraw.setPenRadius(.01);
-
             drawSubtree(KdTree);
             StdDraw.show();
 
