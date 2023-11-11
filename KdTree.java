@@ -335,7 +335,6 @@ public class KdTree {
            StdDraw.setPenRadius(.01);
             drawSubtree(KdTree);
             StdDraw.show();
-
         }
         private void arrLis(ArrayList lis,Node temp,RectHV rect){
         if(rect!=null) {
